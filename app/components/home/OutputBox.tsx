@@ -24,7 +24,7 @@ export default function OutputBox({ shortURL }: Props) {
             id="short"
             type="url"
             readOnly
-            defaultValue={shortURL}
+            value={shortURL}
             className="truncate"
           />
           <button type="button" className="flex-1">
@@ -41,7 +41,7 @@ export default function OutputBox({ shortURL }: Props) {
           QR Code
         </label>
         <div className="flex gap-9">
-          <div className="aspect-square h-45 bg-fore rounded-sm p-4">
+          <div className="aspect-square h-45 bg-fore rounded-md p-4">
             <QRCode
               value={shortURL}
               size={256}
