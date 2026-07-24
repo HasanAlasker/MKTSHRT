@@ -9,6 +9,7 @@ export default function URLinput({ setShortLink }: Props) {
   const [longUrl, setLongUrl] = useState<string>();
 
   const generateCode = () => {
+    if (!longUrl) return;
     // generate a random 6 digit code here
     // check the db if it exists
     // if yes regenerate a new one
