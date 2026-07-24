@@ -30,7 +30,7 @@ export default function URLinput({ setShortLink }: Props) {
           onChange={(e) => setLongUrl(e.target.value)}
         />
         <button type="button" className="Pri flex-1" onClick={generateCode}>
-          SHORTEN
+          SHORTEN &#10132;
         </button>
       </div>
     </div>

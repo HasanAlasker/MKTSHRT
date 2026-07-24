@@ -40,8 +40,8 @@ export default function OutputBox({ shortURL }: Props) {
         >
           QR Code
         </label>
-        <div className="flex gap-9">
-          <div className="aspect-square h-45 bg-fore rounded-md p-4">
+        <div className="flex flex-col md:flex-row gap-9">
+          <div className="aspect-square max-w-60 bg-fore rounded-md p-4">
             <QRCode
               value={shortURL}
               size={256}
@@ -51,14 +51,18 @@ export default function OutputBox({ shortURL }: Props) {
           <div className="flex flex-col gap-8">
             <h4 className="text-sm">
               Scan to open{" "}
-              <a className="text-accent font-bold" href={"https://" + shortURL} target="_blank">
+              <a
+                className="text-accent font-bold"
+                href={"https://" + shortURL}
+                target="_blank"
+              >
                 {shortURL}
               </a>{" "}
               on any device. Download as PNG to use in print or digital
               materials.
             </h4>
             <button type="button" className="Sec w-fit">
-              DOWNLOAD PNG
+              DOWNLOAD PNG &#10515;
             </button>
           </div>
         </div>
