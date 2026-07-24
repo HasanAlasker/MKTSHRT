@@ -8,7 +8,7 @@ export default function Home() {
       <div className="bg-grid-white fixed inset-0 -z-1"></div>
       <Hero />
       <URLinput />
-      <OutputBox />
+      <OutputBox shortURL="alasker.dev"/>
     </div>
   );
 }

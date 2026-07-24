@@ -1,5 +1,9 @@
 import React from "react";
 
+const generateCode = () => {
+  
+}
+
 export default function URLinput() {
   return (
     <div className="custom-box ">

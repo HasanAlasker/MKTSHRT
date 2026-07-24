@@ -1,6 +1,15 @@
 import React from "react";
+import QRCode from "react-qr-code";
 
-export default function OutputBox() {
+interface Props {
+  shortURL: string;
+}
+
+const handleCopy = () => {};
+const handleDownlaod = () => {};
+const openLink = () => {};
+
+export default function OutputBox({ shortURL }: Props) {
   return (
     <div className="custom-box gap-8">
       <div className="flex flex-col gap-3">
@@ -15,7 +24,7 @@ export default function OutputBox() {
             id="short"
             type="url"
             readOnly
-            defaultValue={"https://alasker.dev"}
+            defaultValue={shortURL}
             className="truncate"
           />
           <button type="button" className="flex-1">
@@ -32,11 +41,21 @@ export default function OutputBox() {
           QR Code
         </label>
         <div className="flex gap-9">
-          <div className="aspect-square h-45 bg-fore rounded-sm"></div>
+          <div className="aspect-square h-45 bg-fore rounded-sm p-4">
+            <QRCode
+              value={shortURL}
+              size={256}
+              style={{ height: "100%", width: "100%" }}
+            />
+          </div>
           <div className="flex flex-col gap-8">
             <h4 className="text-sm">
-              Scan to open sho.rt/a3h5yp on any device. Download as PNG to use
-              in print or digital materials.
+              Scan to open{" "}
+              <a className="text-accent font-bold" href={"https://" + shortURL} target="_blank">
+                {shortURL}
+              </a>{" "}
+              on any device. Download as PNG to use in print or digital
+              materials.
             </h4>
             <button type="button" className="Sec w-fit">
               DOWNLOAD PNG
