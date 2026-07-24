@@ -75,7 +75,7 @@ input {
   background-color: var(--background);
   border: 1px solid var(--sec);
   border-radius: 0.4rem;
-  padding: 0.8rem 1rem;
+  /* padding: 0.8rem 1rem; */
 }
 
 button {
