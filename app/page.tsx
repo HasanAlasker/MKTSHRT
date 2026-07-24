@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Hero from "./components/home/Hero";
 import OutputBox from "./components/home/OutputBox";
 import URLinput from "./components/home/URLinput";

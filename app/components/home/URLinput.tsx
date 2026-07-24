@@ -9,9 +9,27 @@ export default function URLinput({ setShortLink }: Props) {
   const [longUrl, setLongUrl] = useState<string>();
 
   const generateCode = () => {
-    setShortLink(longUrl!)
+    // generate a random 6 digit code here
+    // check the db if it exists
+    // if yes regenerate a new one
+    // save it to the db
+    // show it to the user
+    const length = 6;
+    const allowedChars =
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const charsLength = allowedChars.length;
+
+    let code = "";
+
+    for (let i = 0; i < length; i++) {
+      let randomIndex = Math.floor(Math.random() * charsLength);
+      code += allowedChars[randomIndex];
+    }
+    setShortLink(code);
   };
 
+  // TODO: when you now what the website domain is add it before the short link
+  // example: shorter/9We4EM.netlify.app
   return (
     <div className="custom-box ">
       <label

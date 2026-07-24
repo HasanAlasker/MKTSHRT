@@ -1,15 +1,22 @@
-import React from "react";
 import QRCode from "react-qr-code";
 
 interface Props {
   shortURL: string;
 }
 
-const handleCopy = () => {};
-const handleDownlaod = () => {};
-const openLink = () => {};
-
 export default function OutputBox({ shortURL }: Props) {
+  const openLink = () => {
+    window.open(shortURL, "_blank");
+  };
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(shortURL);
+    // Todo: instead of this alert chnage the icon of the button
+    alert("Short URL copied to clipboard");
+  };
+
+  const handleDownlaod = () => {};
+
   return (
     <div className="custom-box gap-8">
       <div className="flex flex-col gap-3">
@@ -26,8 +33,9 @@ export default function OutputBox({ shortURL }: Props) {
             readOnly
             value={shortURL}
             className="truncate"
+            onClick={openLink}
           />
-          <button type="button" className="flex-1">
+          <button type="button" className="flex-1" onClick={handleCopy}>
             COPY
           </button>
         </div>
@@ -41,8 +49,9 @@ export default function OutputBox({ shortURL }: Props) {
           QR Code
         </label>
         <div className="flex flex-col md:flex-row gap-9">
-          <div className="aspect-square max-w-60 bg-fore rounded-md p-4">
+          <div className="aspect-square max-w-60 md:w-100 bg-fore rounded-md p-4">
             <QRCode
+              // todo: put domain
               value={shortURL}
               size={256}
               style={{ height: "100%", width: "100%" }}
@@ -53,9 +62,10 @@ export default function OutputBox({ shortURL }: Props) {
               Scan to open{" "}
               <a
                 className="text-accent font-bold"
-                href={"https://" + shortURL}
+                href={shortURL}
                 target="_blank"
               >
+                {/* todo: put domain */}
                 {shortURL}
               </a>{" "}
               on any device. Download as PNG to use in print or digital
