@@ -22,3 +22,17 @@ export const shortenLink = async (originalLink: string) => {
     return { ok: false, error };
   }
 };
+
+export const redirectLink = async (shortCode: string) => {
+  try {
+    const res = await apiClient.get(`/${shortCode}`);
+    return {
+      ok: true,
+      data: res.data,
+      status: res.status,
+    };
+  } catch (error) {
+    console.log(error);
+    return { ok: false, error };
+  }
+};

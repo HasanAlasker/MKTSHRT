@@ -11,7 +11,10 @@ export default function URLinput({ setShortLink }: Props) {
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(false);
 
+  //todo: validate link properly
+
   const handleShorten = async () => {
+    setShortLink("");
     setErr(false);
     if (!longUrl) return;
     try {

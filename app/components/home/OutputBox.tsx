@@ -16,7 +16,7 @@ export default function OutputBox({ shortCode: shortURL }: Props) {
   };
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(shortURL);
+    await navigator.clipboard.writeText(DOMAIN + shortURL);
     setCopied(true);
     setTimeout(() => {
       setCopied(false);
