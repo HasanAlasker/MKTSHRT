@@ -89,7 +89,7 @@ export default function OutputBox({ shortCode: shortURL }: Props) {
               >
                 {DOMAIN + shortURL}
               </a>{" "}
-              on any device. Download as PNG to use in print or digital
+              on any device. Download as SVG to use in print or digital
               materials.
             </h4>
             <button
