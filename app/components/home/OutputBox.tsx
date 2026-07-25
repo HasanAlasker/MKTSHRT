@@ -1,3 +1,6 @@
+"use client";
+import { ArrowDownToLine, Check, Clipboard, Copy } from "lucide-react";
+import { useState } from "react";
 import QRCode from "react-qr-code";
 
 interface Props {
@@ -5,14 +8,18 @@ interface Props {
 }
 
 export default function OutputBox({ shortURL }: Props) {
+  const [justCopied, setCopied] = useState(false);
+
   const openLink = () => {
     window.open(shortURL, "_blank");
   };
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(shortURL);
-    // Todo: instead of this alert chnage the icon of the button
-    alert("Short URL copied to clipboard");
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 700);
   };
 
   const handleDownlaod = () => {};
@@ -36,7 +43,7 @@ export default function OutputBox({ shortURL }: Props) {
             onClick={openLink}
           />
           <button type="button" className="flex-1" onClick={handleCopy}>
-            COPY
+            COPY {justCopied ? <Check size={18} /> : <Clipboard size={17} />}
           </button>
         </div>
       </div>
@@ -72,7 +79,7 @@ export default function OutputBox({ shortURL }: Props) {
               materials.
             </h4>
             <button type="button" className="Sec w-fit">
-              DOWNLOAD PNG &#10515;
+              DOWNLOAD PNG <ArrowDownToLine size={18} />
             </button>
           </div>
         </div>
