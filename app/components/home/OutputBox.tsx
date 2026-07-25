@@ -23,7 +23,21 @@ export default function OutputBox({ shortCode: shortURL }: Props) {
     }, 700);
   };
 
-  const handleDownlaod = () => {};
+  const handleDownload = () => {
+    const svg = document.getElementById("qr-code-svg");
+    if (!svg) return;
+
+    const svgData = new XMLSerializer().serializeToString(svg);
+    const blob = new Blob([svgData], { type: "image/svg+xml" });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${shortURL}-qr.svg`;
+    link.click();
+
+    URL.revokeObjectURL(url);
+  };
 
   return (
     <div className="custom-box gap-8">
@@ -59,6 +73,7 @@ export default function OutputBox({ shortCode: shortURL }: Props) {
         <div className="flex flex-col md:flex-row gap-9">
           <div className="aspect-square max-w-60 md:w-100 bg-fore rounded-md p-4">
             <QRCode
+              id="qr-code-svg"
               value={DOMAIN + shortURL}
               size={256}
               style={{ height: "100%", width: "100%" }}
@@ -77,8 +92,12 @@ export default function OutputBox({ shortCode: shortURL }: Props) {
               on any device. Download as PNG to use in print or digital
               materials.
             </h4>
-            <button type="button" className="Sec w-fit">
-              DOWNLOAD PNG <ArrowDownToLine size={18} />
+            <button
+              type="button"
+              className="Sec w-fit"
+              onClick={handleDownload}
+            >
+              DOWNLOAD SVG <ArrowDownToLine size={18} />
             </button>
           </div>
         </div>
