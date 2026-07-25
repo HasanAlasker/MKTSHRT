@@ -1,13 +1,14 @@
 "use client";
-import { ArrowDownToLine, Check, Clipboard, Copy } from "lucide-react";
+import { DOMAIN } from "@/app/constants/Domain";
+import { ArrowDownToLine, Check, Clipboard } from "lucide-react";
 import { useState } from "react";
 import QRCode from "react-qr-code";
 
 interface Props {
-  shortURL: string;
+  shortCode: string;
 }
 
-export default function OutputBox({ shortURL }: Props) {
+export default function OutputBox({ shortCode: shortURL }: Props) {
   const [justCopied, setCopied] = useState(false);
 
   const openLink = () => {
@@ -38,7 +39,7 @@ export default function OutputBox({ shortURL }: Props) {
             id="short"
             type="url"
             readOnly
-            value={shortURL}
+            value={DOMAIN + shortURL}
             className="truncate"
             onClick={openLink}
           />
@@ -58,8 +59,7 @@ export default function OutputBox({ shortURL }: Props) {
         <div className="flex flex-col md:flex-row gap-9">
           <div className="aspect-square max-w-60 md:w-100 bg-fore rounded-md p-4">
             <QRCode
-              // todo: put domain
-              value={shortURL}
+              value={DOMAIN + shortURL}
               size={256}
               style={{ height: "100%", width: "100%" }}
             />
@@ -72,8 +72,7 @@ export default function OutputBox({ shortURL }: Props) {
                 href={shortURL}
                 target="_blank"
               >
-                {/* todo: put domain */}
-                {shortURL}
+                {DOMAIN + shortURL}
               </a>{" "}
               on any device. Download as PNG to use in print or digital
               materials.

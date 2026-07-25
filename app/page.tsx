@@ -5,19 +5,19 @@ import OutputBox from "./components/home/OutputBox";
 import URLinput from "./components/home/URLinput";
 
 export default function Home() {
-  const [shortUrl, setShortUrl] = useState<string>();
+  const [shortCode, setShortCode] = useState<string>();
 
   useEffect(() => {
     window.scrollTo(0, document.body.scrollHeight);
-  }, [shortUrl]);
+  }, [shortCode]);
 
   return (
     <div className="Screen flex flex-col items-center gap-20 relative pb-20">
       <div className="bg-grid-white fixed inset-0 -z-1"></div>
       <Hero />
       <div className="flex w-full justify-center items-center flex-col gap-14">
-        <URLinput setShortLink={setShortUrl} />
-        {shortUrl && <OutputBox shortURL={shortUrl} />}
+        <URLinput setShortLink={setShortCode} />
+        {shortCode && <OutputBox shortCode={shortCode} />}
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ datasource db {
 
 model Link {
   id           String   @id @default(cuid())
-  originalLink String
+  originalLink String   @unique
   shortCode    String   @unique
   clicked      Int      @default(0)
   createdAt    DateTime @default(now())

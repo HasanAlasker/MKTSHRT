@@ -8,3 +8,7 @@ export default async function page({ params }: Props) {
   // here i should call and endpoint that maps the short code and redirects
   return <div>{shortCode}</div>;
 }
+
+
+// POST: create the link /api/link
+// GET: redirect to the link
