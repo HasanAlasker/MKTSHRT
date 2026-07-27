@@ -1,6 +1,8 @@
 "use client";
 import { shortenLink } from "@/app/lib/linkEndpoints";
+import { MoveRight } from "lucide-react";
 import { useState } from "react";
+import { TailSpin } from "react-loader-spinner";
 
 interface Props {
   setShortLink: (shortUrl: string) => void;
@@ -59,7 +61,18 @@ export default function URLinput({ setShortLink }: Props) {
           className={`Pri flex-1 ${loading && "opacity-50"} `}
           onClick={handleShorten}
         >
-          SHORTEN &#10132;
+          {!loading ? (
+            <div className="flex gap-2 items-center">
+              Shorten <MoveRight size={17} />
+            </div>
+          ) : (
+            <TailSpin
+              height={20}
+              // width={20}
+              color="black"
+              strokeWidth={4}
+            />
+          )}
         </button>
       </div>
       {err && (
